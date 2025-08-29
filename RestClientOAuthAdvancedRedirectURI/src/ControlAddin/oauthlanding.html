@@ -1,0 +1,29 @@
+
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+    <body onload="onLoad()">
+        <script>
+            function onLoad() {
+                var params = new URLSearchParams(window.location.search);
+                if ((!(params)) || (!(params.has("state")))) {
+                	console.log("no state");
+                    return;
+                }
+                var target = params.get("state").split("|", 1)[0];
+
+                var message = {
+                	code: "OAuthResponseReceived",
+                	response: window.location.search
+                }
+
+                if (top != self) {
+                    window.parent.postMessage(message, target);
+                } else {
+                    window.opener.postMessage(message, target);
+                }
+            }
+        </script>
+    </body>
+</html>

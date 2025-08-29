@@ -1,0 +1,39 @@
+{
+  "id": "c9817158-78d7-4669-b35c-9a82ae486a70",
+  "name": "Rest Client OAuth Examples",
+  "publisher": "AJ Kauffmann",
+  "version": "1.0.0.0",
+  "brief": "",
+  "description": "",
+  "privacyStatement": "",
+  "EULA": "",
+  "help": "",
+  "url": "",
+  "logo": "",
+  "dependencies": [
+    {
+      "id": "19642efb-0a6e-4738-afc4-025f37856f4f",
+      "name": "Rest Client OAuth",
+      "publisher": "AJ Kauffmann",
+      "version": "1.0.0.0"
+    }
+  ],
+  "screenshots": [],
+  "platform": "26.0.0.0",
+  "application": "26.0.0.0",
+  "idRanges": [
+    {
+      "from": 50500,
+      "to": 50549
+    }
+  ],
+  "resourceExposurePolicy": {
+    "allowDebugging": true,
+    "allowDownloadingSource": true,
+    "includeSourceInSymbolFile": true
+  },
+  "runtime": "15.0",
+  "features": [
+    "NoImplicitWith"
+  ]
+}

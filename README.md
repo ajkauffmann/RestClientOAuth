@@ -1,0 +1,1 @@
+See [README](RestClientOAuth/README.md) for information about the OAuth module for the Rest Client in Business Central.
