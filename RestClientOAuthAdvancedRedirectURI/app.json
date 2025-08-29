@@ -1,0 +1,39 @@
+{
+  "id": "7ac8515c-8419-4152-be83-135bfa210e1d",
+  "name": "Advanced Redirect URI",
+  "publisher": "AJ Kauffmann",
+  "version": "1.0.0.0",
+  "brief": "",
+  "description": "",
+  "privacyStatement": "",
+  "EULA": "",
+  "help": "",
+  "url": "",
+  "logo": "",
+  "dependencies": [
+    {
+      "id": "19642efb-0a6e-4738-afc4-025f37856f4f",
+      "name": "Rest Client OAuth",
+      "publisher": "AJ Kauffmann",
+      "version": "1.0.0.0"
+    }
+  ],
+  "screenshots": [],
+  "platform": "26.0.0.0",
+  "application": "26.0.0.0",
+  "idRanges": [
+    {
+      "from": 50400,
+      "to": 50409
+    }
+  ],
+  "resourceExposurePolicy": {
+    "allowDebugging": true,
+    "allowDownloadingSource": true,
+    "includeSourceInSymbolFile": true
+  },
+  "runtime": "15.0",
+  "features": [
+    "NoImplicitWith"
+  ]
+}

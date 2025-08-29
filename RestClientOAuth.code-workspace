@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"path": "RestClientOAuth"
+		},
+		{
+			"path": "RestClientOAuthAdvancedRedirectURI"
+		},
+		{
+			"path": "RestClientOAuthExamples"
+		}
+	],
+	"settings": {}
+}
