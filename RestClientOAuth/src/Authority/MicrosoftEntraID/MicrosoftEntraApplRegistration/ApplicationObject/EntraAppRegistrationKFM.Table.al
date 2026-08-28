@@ -7,7 +7,7 @@ table 50304 "Entra App Registration KFM"
 
     fields
     {
-        field(1; Code; Code[20])
+        field(1; "Code"; Code[20])
         {
             Caption = 'Code';
             DataClassification = SystemMetadata;

@@ -1,4 +1,3 @@
-namespace Microsoft.Identity.Client;
 codeunit 50315 "Microsoft Entra ID KFM" implements "OAuth Authority KFM"
 {
     var

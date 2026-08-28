@@ -1,5 +1,3 @@
-namespace Microsoft.Identity.Client;
-
 codeunit 50316 "Microsoft Entra ID Impl. KFM"
 {
     Access = Internal;

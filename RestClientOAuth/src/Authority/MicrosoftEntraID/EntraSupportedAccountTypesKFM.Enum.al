@@ -1,4 +1,3 @@
-namespace Microsoft.Identity.Client;
 enum 50302 EntraSupportedAccountTypesKFM
 {
     Extensible = false;
