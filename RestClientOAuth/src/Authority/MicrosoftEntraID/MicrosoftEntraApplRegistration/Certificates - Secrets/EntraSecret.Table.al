@@ -11,6 +11,7 @@ table 50302 "Entra Secret KFM"
         {
             Caption = 'Application Code';
             DataClassification = SystemMetadata;
+            TableRelation = "Entra App Registration KFM".Code;
         }
         field(2; Id; Text[36])
         {
