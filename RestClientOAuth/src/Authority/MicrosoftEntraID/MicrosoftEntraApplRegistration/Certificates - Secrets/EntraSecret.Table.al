@@ -72,6 +72,8 @@ table 50302 "Entra Secret KFM"
 
     procedure SetSecretText(SecretText: Text[215])
     begin
+        RemoveSecretText();
+        
         Rec."Isolated Storage Id" := CreateGuid();
         Rec.Modify();
 
@@ -83,7 +85,7 @@ table 50302 "Entra Secret KFM"
 
     procedure RemoveSecretText()
     begin
-        if IsolatedStorage.Contains(Id, DataScope::Module) then
-            IsolatedStorage.Delete(Id, DataScope::Module);
+        if IsolatedStorage.Contains("Isolated Storage Id", DataScope::Module) then
+            IsolatedStorage.Delete("Isolated Storage Id", DataScope::Module);
     end;
 }

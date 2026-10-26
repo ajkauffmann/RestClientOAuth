@@ -1,6 +1,6 @@
 table 50304 "Entra App Registration KFM"
 {
-    Caption = 'Microsoft Entra App Registation';
+    Caption = 'Microsoft Entra App Registration';
     DataPerCompany = false;
     ReplicateData = false;
     LookupPageId = "Entra App Registr. List KFM";

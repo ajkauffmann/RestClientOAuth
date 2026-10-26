@@ -5,7 +5,6 @@ codeunit 50314 AuthCodeGrantFlowImplKFM
     var
         OAuthAuthenticationResult: Codeunit "OAuth AuthenticationResult KFM";
         OAuthAuthority: Interface "OAuth Authority KFM";
-        AuthorizationCanceledMsg: Label 'The authorization was canceled.';
         PKCECodeVerifier: Text[128];
         OAuthClientType: Enum "OAuth Client Type KFM";
         PromptInteraction: Enum "Prompt Interaction";

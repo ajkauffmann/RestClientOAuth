@@ -3,8 +3,8 @@ codeunit 50313 ClientCredentialsFlowImplKFM
     Access = Internal;
 
     var
-        OAuthAuthority: Interface "OAuth Authority KFM";
         OAuthAuthenticationResult: Codeunit "OAuth AuthenticationResult KFM";
+        OAuthAuthority: Interface "OAuth Authority KFM";
 
     procedure SetAuthority(Value: Interface "OAuth Authority KFM")
     begin

@@ -102,7 +102,7 @@ table 50303 "Entra Certificate KFM"
             Rec.CalcFields(Certificate);
             Rec.Certificate.CreateInStream(InStream);
             InStream.ReadText(ReturnValue);
-        end
+        end;
     end;
 
     internal procedure DownloadCertificate()

@@ -4,10 +4,10 @@ codeunit 50308 OAuthConfidentialClientImplKFM
 
     var
         RestClient: Codeunit "Rest Client";
-        RestClientInitialized: Boolean;
         Base64Convert: Codeunit "Base64 Convert";
         CryptographyManagement: Codeunit "Cryptography Management";
         TimeHelper: Codeunit TimeHelper;
+        RestClientInitialized: Boolean;
 
     procedure AcquireTokenByAuthorizationCode(AuthorizationCode: SecretText; OAuthAuthority: Interface "OAuth Authority KFM"; OAuthClientApplication: Codeunit "OAuth Application Config KFM") AuthenticationResult: Codeunit "OAuth AuthenticationResult KFM"
     begin
@@ -75,7 +75,7 @@ codeunit 50308 OAuthConfidentialClientImplKFM
     begin
         AccessTokenRequestTxt := FinishTokenRequest(AccessTokenRequest, OAuthAuthority, OAuthClientApplication);
         HttpContent := HttpContent.Create(AccessTokenRequestTxt, 'application/x-www-form-urlencoded');
-        
+
         InitializeRestClient();
         HttpResponseMessage := RestClient.Post(OAuthAuthority.GetTokenEndpoint(), HttpContent);
 
@@ -128,6 +128,7 @@ codeunit 50308 OAuthConfidentialClientImplKFM
         InStream: InStream;
         JsonHeader, JsonClaims : JsonObject;
         JsonText, Thumbprint, SignatureBase64 : Text;
+        Now: DateTime;
     begin
         JsonHeader.Add('alg', 'RS256');
         JsonHeader.Add('typ', 'JWT');
@@ -135,13 +136,14 @@ codeunit 50308 OAuthConfidentialClientImplKFM
         JsonHeader.WriteTo(JsonText);
         Jwt := Base64UrlEncode(Base64Convert.ToBase64(JsonText));
 
+        Now := CurrentDateTime();
         JsonClaims.Add('aud', OAuthAuthority.GetTokenEndpoint());
-        JsonClaims.Add('exp', TimeHelper.GetEpochTimestamp(CreateDateTime(Today, Time + (5 * 60000))));
+        JsonClaims.Add('exp', TimeHelper.GetEpochTimestamp(Now + (5 * 60000)));
         JsonClaims.Add('iss', OAuthClientApplication.GetClientId());
         JsonClaims.Add('jti', Format(CreateGuid(), 0, 4).ToLower());
-        JsonClaims.Add('nbf', TimeHelper.GetEpochTimestamp(CreateDateTime(Today, Time - 60000)));
+        JsonClaims.Add('nbf', TimeHelper.GetEpochTimestamp(Now - 60000));
         JsonClaims.Add('sub', OAuthClientApplication.GetClientId());
-        JsonClaims.Add('iat', TimeHelper.GetEpochTimestamp(CreateDateTime(Today, Time)));
+        JsonClaims.Add('iat', TimeHelper.GetEpochTimestamp(Now));
         JsonClaims.WriteTo(JsonText);
         Jwt := Jwt + '.' + Base64UrlEncode(Base64Convert.ToBase64(JsonText));
 

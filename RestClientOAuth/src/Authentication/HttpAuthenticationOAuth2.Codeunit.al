@@ -15,6 +15,6 @@ codeunit 50301 "Http Authentication OAuth2 KFM" implements "Http Authentication"
 
     procedure GetAuthorizationHeaders() Headers: Dictionary of [Text, SecretText];
     begin
-        Headers := HttpAuthenticationOAuth2Imp.GetAuthorizationHeaders()
+        Headers := HttpAuthenticationOAuth2Imp.GetAuthorizationHeaders();
     end;
 }
