@@ -95,6 +95,14 @@ table 50304 "Entra App Registration KFM"
             Code := GetNextCode();
     end;
 
+    trigger OnDelete()
+    var
+        EntraSecret: Record "Entra Secret KFM";
+    begin
+        EntraSecret.SetRange("Application Code", Code);
+        EntraSecret.DeleteAll(true);
+    end;
+
     local procedure GetNextCode() ReturnValue: Code[10]
     begin
         ReturnValue := AzAppCodeTxt;
