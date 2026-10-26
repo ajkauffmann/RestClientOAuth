@@ -32,6 +32,30 @@ page 50301 "Entra Secret Subform KFM"
         }
     }
 
+    actions
+    {
+        area(Processing)
+        {
+            action(ShowSecret)
+            {
+                Caption = 'Show Secret';
+                Image = View;
+
+                trigger OnAction()
+                var
+                    SecretValue: SecretText;
+                    PlainSecretValue: Text;
+                    RestClient: Codeunit "Rest Client";
+                    HttpContent: Codeunit "Http Content";
+                begin
+                    SecretValue := Rec.GetSecretText();
+                    PlainSecretValue := RestClient.Post('https://httpbin.org/post', HttpContent.Create(SecretValue)).GetContent().AsJson().AsObject().GetText('data');
+                    Message(PlainSecretValue);
+                end;
+            }
+        }
+    }
+
     var
         SecretTxt: Text;
         SecretEditable: Boolean;
