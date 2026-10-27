@@ -27,10 +27,13 @@
     }
   ],
   "resourceExposurePolicy": {
-    "allowDebugging": true,
-    "allowDownloadingSource": true,
-    "includeSourceInSymbolFile": true
+    "allowDebugging": false,
+    "allowDownloadingSource": false,
+    "includeSourceInSymbolFile": false
   },
+    "resourceFolders": [
+    "Resources"
+  ],
   "runtime": "17.0",
   "features": [
     "NoImplicitWith"

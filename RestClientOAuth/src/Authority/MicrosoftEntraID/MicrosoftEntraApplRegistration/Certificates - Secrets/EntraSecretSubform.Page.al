@@ -53,6 +53,16 @@ page 50301 "Entra Secret Subform KFM"
                     Message(PlainSecretValue);
                 end;
             }
+            action(ShowEncryptedSecret)
+            {
+                Caption = 'Show Encrypted Secret';
+                Image = View;
+
+                trigger OnAction()
+                begin
+                    Message(Rec."Encrypted Secret");
+                end;
+            }
         }
     }
 

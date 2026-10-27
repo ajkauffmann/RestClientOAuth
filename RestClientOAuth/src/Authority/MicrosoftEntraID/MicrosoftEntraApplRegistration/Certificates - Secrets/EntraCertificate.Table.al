@@ -44,6 +44,7 @@ table 50303 "Entra Certificate KFM"
     }
 
     var
+        DataEncryptionHelper: Codeunit "Data Encryption Helper KFM";
         CertCodeTxt: Label 'CERT', Locked = true;
 
     trigger OnInsert()
@@ -132,7 +133,7 @@ table 50303 "Entra Certificate KFM"
         OutStream: OutStream;
     begin
         Rec."Private Key".CreateOutStream(OutStream);
-        OutStream.WriteText(Value);
+        OutStream.WriteText(DataEncryptionHelper.Encrypt(Value));
     end;
 
     internal procedure GetPrivateKey() ReturnValue: SecretText
@@ -151,7 +152,7 @@ table 50303 "Entra Certificate KFM"
             Rec."Private Key".CreateInStream(InStream);
             InStream.ReadText(Value);
         end;
-        ReturnValue := Value;
+        ReturnValue := DataEncryptionHelper.Decrypt(Value);
     end;
 
     internal procedure ThumbprintBase64() ReturnValue: Text

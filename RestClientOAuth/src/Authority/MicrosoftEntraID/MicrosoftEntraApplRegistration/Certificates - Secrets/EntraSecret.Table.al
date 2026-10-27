@@ -33,6 +33,11 @@ table 50302 "Entra Secret KFM"
             Access = Local;
             DataClassification = SystemMetadata;
         }
+        field(4; "Encrypted Secret"; Text[89])
+        {
+            Caption = 'Encrypted Secret';
+            DataClassification = CustomerContent;
+        }
         field(10; Description; Text[100])
         {
             Caption = 'Description';
@@ -60,33 +65,17 @@ table 50302 "Entra Secret KFM"
         key(PK; "Application Code", Id) { Clustered = true; }
     }
 
-    trigger OnDelete()
-    begin
-        RemoveSecretText();
-    end;
+    var
+        DataEncryptionHelper: Codeunit "Data Encryption Helper KFM";
 
     procedure GetSecretText() ReturnValue: SecretText
     begin
-        if IsolatedStorage.Contains("Isolated Storage Id", DataScope::Module) then
-            IsolatedStorage.Get("Isolated Storage Id", DataScope::Module, ReturnValue);
+        ReturnValue := DataEncryptionHelper.Decrypt(Rec."Encrypted Secret");
     end;
 
     procedure SetSecretText(SecretText: Text[215])
     begin
-        RemoveSecretText();
-        
-        Rec."Isolated Storage Id" := CreateGuid();
+        Rec."Encrypted Secret" := DataEncryptionHelper.Encrypt(SecretText);
         Rec.Modify();
-
-        if EncryptionEnabled() then
-            IsolatedStorage.SetEncrypted("Isolated Storage Id", SecretText, DataScope::Module)
-        else
-            IsolatedStorage.Set("Isolated Storage Id", SecretText, DataScope::Module);
-    end;
-
-    procedure RemoveSecretText()
-    begin
-        if IsolatedStorage.Contains("Isolated Storage Id", DataScope::Module) then
-            IsolatedStorage.Delete("Isolated Storage Id", DataScope::Module);
     end;
 }
