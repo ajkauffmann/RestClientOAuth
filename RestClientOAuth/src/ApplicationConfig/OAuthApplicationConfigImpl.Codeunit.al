@@ -19,14 +19,14 @@ codeunit 50307 OAuthApplicationConfigImplKFM
 
     #region ClientSecret
     var
-        ClientSecret: SecretText;
+        ClientSecret: Text;
 
-    procedure SetClientSecret(Value: SecretText)
+    procedure SetClientSecret(Value: Text)
     begin
         ClientSecret := Value;
     end;
 
-    procedure GetClientSecret() Value: SecretText
+    procedure GetClientSecret() Value: Text
     begin
         Value := ClientSecret;
     end;

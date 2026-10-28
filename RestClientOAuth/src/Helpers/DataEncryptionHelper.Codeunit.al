@@ -51,11 +51,20 @@ codeunit 50300 "Data Encryption Helper KFM"
     internal procedure Decrypt(StoredValue: Text) ReturnValue: SecretText
     var
         Rijndael: Codeunit "Rijndael Cryptography";
+        CallerMustBeSameModuleErr: Label 'Decrypt can only be called from the same module that owns the data key.';
+        ThisModule: ModuleInfo;
+        CallingModule: ModuleInfo;
         DataKey: SecretText;
         IVBase64: Text;
         CipherBase64: Text;
         SeparatorPos: Integer;
     begin
+        NavApp.GetCallerModuleInfo(CallingModule);
+        NavApp.GetCurrentModuleInfo(ThisModule);
+
+        if CallingModule.Id <> ThisModule.Id then
+            Error(CallerMustBeSameModuleErr);
+
         if StoredValue = '' then
             exit;
 

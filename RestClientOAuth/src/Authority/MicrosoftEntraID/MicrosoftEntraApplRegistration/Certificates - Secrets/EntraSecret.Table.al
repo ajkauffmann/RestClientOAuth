@@ -68,11 +68,6 @@ table 50302 "Entra Secret KFM"
     var
         DataEncryptionHelper: Codeunit "Data Encryption Helper KFM";
 
-    procedure GetSecretText() ReturnValue: SecretText
-    begin
-        ReturnValue := DataEncryptionHelper.Decrypt(Rec."Encrypted Secret");
-    end;
-
     procedure SetSecretText(SecretText: Text[215])
     begin
         Rec."Encrypted Secret" := DataEncryptionHelper.Encrypt(SecretText);

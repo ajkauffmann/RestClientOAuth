@@ -43,12 +43,13 @@ page 50301 "Entra Secret Subform KFM"
 
                 trigger OnAction()
                 var
+                    DataEncryptionHelper: Codeunit "Data Encryption Helper KFM";
                     SecretValue: SecretText;
                     PlainSecretValue: Text;
                     RestClient: Codeunit "Rest Client";
                     HttpContent: Codeunit "Http Content";
                 begin
-                    SecretValue := Rec.GetSecretText();
+                    SecretValue := DataEncryptionHelper.Decrypt(Rec."Encrypted Secret");
                     PlainSecretValue := RestClient.Post('https://httpbin.org/post', HttpContent.Create(SecretValue)).GetContent().AsJson().AsObject().GetText('data');
                     Message(PlainSecretValue);
                 end;

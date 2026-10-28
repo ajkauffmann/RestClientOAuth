@@ -148,6 +148,6 @@ table 50304 "Entra App Registration KFM"
             OAuthApplicationConfig.SetCertificate(Rec.GetCertificate());
 
         if FindAppSecret(EntraAppSecret) then
-            OAuthApplicationConfig.SetClientSecret(EntraAppSecret.GetSecretText());
+            OAuthApplicationConfig.SetClientSecret(EntraAppSecret."Encrypted Secret");
     end;
 }

@@ -13,12 +13,12 @@ codeunit 50310 "OAuth Certificate KFM"
         ReturnValue := OAuthCertificateImpl.GetCertificate();
     end;
 
-    procedure SetPrivateKey(Value: SecretText)
+    procedure SetPrivateKey(Value: Text)
     begin
         OAuthCertificateImpl.SetPrivateKey(Value);
     end;
 
-    procedure GetPrivateKey() ReturnValue: SecretText
+    procedure GetPrivateKey() ReturnValue: Text
     begin
         ReturnValue := OAuthCertificateImpl.GetPrivateKey();
     end;

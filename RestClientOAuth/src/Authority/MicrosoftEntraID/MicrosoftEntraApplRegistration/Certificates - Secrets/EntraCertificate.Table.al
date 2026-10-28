@@ -136,7 +136,7 @@ table 50303 "Entra Certificate KFM"
         OutStream.WriteText(DataEncryptionHelper.Encrypt(Value));
     end;
 
-    internal procedure GetPrivateKey() ReturnValue: SecretText
+    internal procedure GetPrivateKey() ReturnValue: Text
     var
         InStream: InStream;
         [NonDebuggable]
@@ -152,7 +152,7 @@ table 50303 "Entra Certificate KFM"
             Rec."Private Key".CreateInStream(InStream);
             InStream.ReadText(Value);
         end;
-        ReturnValue := DataEncryptionHelper.Decrypt(Value);
+        ReturnValue := Value;
     end;
 
     internal procedure ThumbprintBase64() ReturnValue: Text
