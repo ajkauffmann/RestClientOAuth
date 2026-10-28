@@ -1,15 +1,23 @@
 {
 	"folders": [
 		{
+			"name": "RestClientOAuth",
 			"path": "RestClientOAuth"
 		},
 		{
+			"name": "RestClientOAuthTest",
+			"path": "RestClientOAuthTest"
+		},
+		{
+			"name": "RestClientOAuthEndpoints",
 			"path": "RestClientOAuthEndpoints"
 		},
 		{
+			"name": "RestClientOAuthAdvancedRedirectURI",
 			"path": "RestClientOAuthAdvancedRedirectURI"
 		},
 		{
+			"name": "RestClientOAuthExamples",
 			"path": "RestClientOAuthExamples"
 		}
 	],

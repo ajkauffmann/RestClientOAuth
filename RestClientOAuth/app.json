@@ -38,5 +38,12 @@
   "features": [
     "NoImplicitWith"
   ],
-  "target": "Cloud"
+  "target": "Cloud",
+  "internalsVisibleTo": [
+    {
+      "id": "68c9f361-0ddb-40c6-bdb4-385bbd247860",
+      "name": "Rest Client OAuth Tests",
+      "publisher": "AJ Kauffmann"
+    }
+  ]
 }
