@@ -37,7 +37,7 @@ Access & refresh tokens are held in `SecretText` variables only. Advantages: no 
 Ensure the exact redirect URI configured in Microsoft Entra ID matches the one used (built-in or advanced). Mismatch causes failed token exchange.
 
 ### Certificate Private Key Handling
-Store private keys securely and inject them through a secure setup process. Avoid committing private-key XML or secret values to source control. When credentials must be stored by this module, use the Microsoft Entra app-registration storage in the core app, which keeps secrets and private keys behind `SecretText` and isolated-storage patterns where applicable.
+Store private keys securely and inject them through a secure setup process. Avoid committing private-key XML or secret values to source control. When credentials must be stored by this module, use the Microsoft Entra app-registration storage in the core app, which keeps secrets and private keys behind `SecretText` and encryption patterns where applicable.
 
 ### Multi-Environment Secret Management
 Use separate Microsoft Entra app registrations or credentials per environment when operational boundaries require it. Keep production secrets out of sample code and development settings, and rotate secrets or certificates according to your organization's policy.

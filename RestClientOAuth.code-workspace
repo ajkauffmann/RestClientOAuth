@@ -5,10 +5,6 @@
 			"path": "RestClientOAuth"
 		},
 		{
-			"name": "RestClientOAuthTest",
-			"path": "RestClientOAuthTest"
-		},
-		{
 			"name": "RestClientOAuthEndpoints",
 			"path": "RestClientOAuthEndpoints"
 		},
