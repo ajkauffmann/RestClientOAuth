@@ -2,6 +2,16 @@
 
 Business Central OAuth 2.0 helper solution for outbound REST calls. The repository is split into focused AL apps so consuming extensions can depend only on the layer they need.
 
+## Security and Production Use
+
+This repository includes OAuth components and demonstration applications. Review the code, permissions, and configuration against your security requirements before production use.
+
+- Replace example placeholders with values from your own Microsoft Entra app registrations. Never commit live client secrets, private keys, access tokens, or refresh tokens.
+- Keep [RestClientOAuth/resources/data.key](RestClientOAuth/resources/data.key) in place as build scaffolding. Follow its instruction to replace the placeholder during your build pipeline with your own AES key stored in Azure Key Vault before storing real credentials. A publicly available key must not be used to protect sensitive data.
+- Published presentation branches may contain historical demo credentials or keys. These values are disposable, are not used in production or other live environments, and must not be reused.
+
+See the core app's [Security Considerations](RestClientOAuth/docs/SecurityConsiderations.md) for additional guidance.
+
 ## Apps
 
 | App | Folder | Purpose |

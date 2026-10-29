@@ -27,13 +27,23 @@
     }
   ],
   "resourceExposurePolicy": {
-    "allowDebugging": true,
-    "allowDownloadingSource": true,
-    "includeSourceInSymbolFile": true
+    "allowDebugging": false,
+    "allowDownloadingSource": false,
+    "includeSourceInSymbolFile": false
   },
+    "resourceFolders": [
+    "Resources"
+  ],
   "runtime": "17.0",
   "features": [
     "NoImplicitWith"
   ],
-  "target": "Cloud"
+  "target": "Cloud",
+  "internalsVisibleTo": [
+    {
+      "id": "68c9f361-0ddb-40c6-bdb4-385bbd247860",
+      "name": "Rest Client OAuth Tests",
+      "publisher": "AJ Kauffmann"
+    }
+  ]
 }

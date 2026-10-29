@@ -31,7 +31,6 @@ page 50301 "Entra Secret Subform KFM"
             }
         }
     }
-
     var
         SecretTxt: Text;
         SecretEditable: Boolean;

@@ -4,7 +4,7 @@ codeunit 50311 "OAuth Certificate Impl. KFM"
 
     var
         Certificate: Text;
-        PrivateKey: SecretText;
+        PrivateKey: Text;
 
     procedure SetCertificate(Value: Text)
     begin
@@ -16,12 +16,12 @@ codeunit 50311 "OAuth Certificate Impl. KFM"
         ReturnValue := Certificate;
     end;
 
-    procedure SetPrivateKey(Value: SecretText)
+    procedure SetPrivateKey(Value: Text)
     begin
         PrivateKey := Value;
     end;
 
-    procedure GetPrivateKey() ReturnValue: SecretText
+    procedure GetPrivateKey() ReturnValue: Text
     begin
         ReturnValue := PrivateKey;
     end;

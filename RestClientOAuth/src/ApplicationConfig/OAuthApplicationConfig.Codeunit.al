@@ -16,12 +16,12 @@ codeunit 50306 "OAuth Application Config KFM"
     #endregion
 
     #region ClientSecret
-    procedure SetClientSecret(Value: SecretText)
+    procedure SetClientSecret(Value: Text)
     begin
         OAuthApplicationConfigImpl.SetClientSecret(Value);
     end;
 
-    procedure GetClientSecret() Value: SecretText
+    procedure GetClientSecret() Value: Text
     begin
         Value := OAuthApplicationConfigImpl.GetClientSecret();
     end;

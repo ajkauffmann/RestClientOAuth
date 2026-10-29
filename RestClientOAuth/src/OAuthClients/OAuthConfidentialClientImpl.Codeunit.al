@@ -110,6 +110,7 @@ codeunit 50308 OAuthConfidentialClientImplKFM
 
     local procedure FinishTokenRequest(AccessTokenRequest: SecretText; OAuthAuthority: Interface "OAuth Authority KFM"; OAuthClientApplication: Codeunit "OAuth Application Config KFM") ReturnValue: SecretText
     var
+        DataEncryptionHelper: Codeunit "Data Encryption Helper KFM";
         SignatureTextBuilder: TextBuilder;
     begin
         if OAuthClientApplication.GetCertificate().HasValue() then begin
@@ -118,12 +119,13 @@ codeunit 50308 OAuthConfidentialClientImplKFM
             SignatureTextBuilder.Append(SignTokenRequest(OAuthAuthority, OAuthClientApplication));
             ReturnValue := SecretStrSubstNo('%1%2', AccessTokenRequest, SignatureTextBuilder.ToText());
         end else
-            ReturnValue := SecretStrSubstNo('%1&client_secret=%2', AccessTokenRequest, OAuthClientApplication.GetClientSecret());
+            ReturnValue := SecretStrSubstNo('%1&client_secret=%2', AccessTokenRequest, DataEncryptionHelper.Decrypt(OAuthClientApplication.GetClientSecret()));
     end;
 
     local procedure SignTokenRequest(OAuthAuthority: Interface "OAuth Authority KFM"; OAuthClientApplication: Codeunit "OAuth Application Config KFM") Jwt: Text;
     var
         Signature: Codeunit "Temp Blob";
+        DataEncryptionHelper: Codeunit "Data Encryption Helper KFM";
         OutStream: OutStream;
         InStream: InStream;
         JsonHeader, JsonClaims : JsonObject;
@@ -148,7 +150,7 @@ codeunit 50308 OAuthConfidentialClientImplKFM
         Jwt := Jwt + '.' + Base64UrlEncode(Base64Convert.ToBase64(JsonText));
 
         Signature.CreateOutStream(OutStream);
-        CryptographyManagement.SignData(Jwt, OAuthClientApplication.GetCertificate().GetPrivateKey(), Enum::"Hash Algorithm"::SHA256, OutStream);
+        CryptographyManagement.SignData(Jwt, DataEncryptionHelper.Decrypt(OAuthClientApplication.GetCertificate().GetPrivateKey()), Enum::"Hash Algorithm"::SHA256, OutStream);
 
         Signature.CreateInStream(InStream);
         SignatureBase64 := Base64UrlEncode(Base64Convert.ToBase64(InStream));
